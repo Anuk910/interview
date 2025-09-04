@@ -2,7 +2,7 @@
 - hosts: webservers
   become: true
   tasks:
-  - name: Installation of packages on Redhat family
+  - name: Install packages on Redhat family
     when: ansible_os_family = "Redhat"
     yum: path={{item}} state=present
     with_items:
@@ -10,8 +10,9 @@
     - zip
     - curl
     - nginx
+    - wget
 
-  - name: Installation of packages on Debain family
+  - name: Install packages on Debain family
     when: ansible_os_family = "Debain"
     apt: path={{item}} state=present
     with_items:
@@ -19,4 +20,5 @@
     - zip
     - curl
     - nginx
+    - unzip
    
